@@ -1,0 +1,32 @@
+.default{
+    background: #FF4742;
+    border: 2px solid black;
+    border-radius: 6px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    padding: 12px 14px;
+    text-align: center;
+    margin: 20px;
+  
+}
+
+.default:hover,
+.default:active {
+  background-color: white;
+  background-position: 0 0;
+  color: #FF4742;
+}
+
+.default:active {
+  opacity: .5;
+}
+
+
+
+
