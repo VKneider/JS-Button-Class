@@ -1,6 +1,5 @@
 import {Button} from "./Button.js";
 
-
 let addBTN = document.getElementById("addBtns");
 addBTN.addEventListener("click", () => {
   
@@ -77,7 +76,6 @@ let x = new Button( 'btn-accept', 'myClass',
 
 
 let y = new Button('btn-deny', 'myClass2', `
-
 
 .myClass2 {
   background: #e62143;
@@ -172,6 +170,11 @@ let z= new Button("cool", "myClass3", `
     padding: 12px 50px;
   }
 }`)
+
+
+
+let b1 = new Button("customIDDD", "myClass3")
 x.appendToBody();
 y.appendToBody();
 z.appendToBody();
+b1.appendToBody();

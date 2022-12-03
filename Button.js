@@ -45,7 +45,9 @@ class Button {
     }
     
     if (this.styles) {
-      document.head.appendChild(this.styles);
+      let buttons = document.getElementsByClassName(this.customClass)
+      if(buttons.length==0){document.head.appendChild(this.styles);} 
+      
     }
     this.main.classList.add("default");
     if(this.customClass){this.main.classList.add(this.customClass)}
