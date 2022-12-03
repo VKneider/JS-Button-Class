@@ -1,44 +1,70 @@
- class Button {
-    constructor(style) {
-      let newElement = document.createElement("div");
-      this.main = newElement;
-      this.main.innerHTML = `Clickeame - ${id}`;
-      this.main.setAttribute("id", id.toString());
-      if (style) {
-        let keys = Object.keys(style);
-        let values = Object.values(style);
-  
-        for (let i = 0; i < keys.length; i++) {
-          this.main.style[keys[i]] = values[i];
-        }
-        this.main.classList.add("custom-btn");
+class Button {
+  constructor(customID,customClass, styles) {
+    let newElement = document.createElement("div");
+    this.main = newElement;
+    this.main.innerHTML = `Clickeame`;
+
+    
+    
+    if(customID){
+      this.main.setAttribute("id", customID)
+    } else {this.main.setAttribute("id", id.toString());id++; }
+
+    if(customClass){
+      this.customClass=customClass;
+    }
+
+    this.main.classList.add("btn");
+    
+
+    if (styles && customClass) {
+
+      let style = document.createElement("style");
+      style.innerHTML=`${styles}`;
+      this.styles = style;
+    }
+
+
+    this.main.addEventListener("mouseup", () => {
+      if (this.main.classList.contains("custom-btn")) {
+        this.main.style.display = "none";
       } else {
-        this.main.classList.add("default");
-        this.main.classList.add("btn");
+        this.hide();
       }
-      id++;
-  
-      this.main.addEventListener("mouseup", () => {
-        if(this.main.classList.contains("custom-btn")){this.main.style.display="none"} else {this.hide();}
-        
-      });
-    }
-  
-    appendToBody() {
-      document.body.appendChild(this.main);
-    }
-  
-    show() {
-      this.main.classList.remove("hidden");
-      this.main.classList.add("default");
-    }
-  
-    hide() {
-      this.main.classList.remove("default");
-      this.main.classList.add("hidden");
-    }
+    });
   }
 
-  var id=0;
+  appendToBody() {
+    
+    if (verify == false) {
+      verify = true;
+      let link = document.createElement("link");
+      link.rel="stylesheet";
+      link.href="./default.css"
+      document.head.appendChild(link);
+    }
+    
+    if (this.styles) {
+      document.head.appendChild(this.styles);
+    }
+    this.main.classList.add("default");
+    if(this.customClass){this.main.classList.add(this.customClass)}
+    document.body.appendChild(this.main);
+    
+  }
+  
+  show() {
+    this.main.classList.remove("hidden");
+    this.main.classList.add("default");
+  }
 
-  export{Button}
+  hide() {
+    this.main.classList.remove("default");
+    this.main.classList.add("hidden");
+  }
+}
+
+var id = 0;
+var verify = false;
+
+export { Button, verify };
